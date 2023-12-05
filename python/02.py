@@ -1,3 +1,5 @@
+from functools import reduce
+
 games = []
 with open('inputs/02.in','r') as f:
     for x in f.readlines():
@@ -41,7 +43,7 @@ for game in games:
     if not ruled_out:
         total_ids += int(id.strip().split(' ')[1])
 
-    total_powers += mins['blue'] * mins['green'] * mins['red']
+    total_powers += reduce(lambda x,y: x*y, mins.values())
 
 print(total_ids)
 # answer: 2593
